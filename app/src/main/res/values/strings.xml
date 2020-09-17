@@ -7,5 +7,6 @@
     <string name="three_point_button">+3 Points</string>
     <string name="two_point_button">+2 Points</string>
     <string name="free_throw_button">Free Throw</string>
+    <string name="end_game_button">End Game</string>
     <string name="zero">0</string>
 </resources>

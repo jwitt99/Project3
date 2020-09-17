@@ -1,5 +1,6 @@
 package com.example.project3
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import layout.ScoreViewModel
 
+private lateinit var endGameButton: Button
 private lateinit var resetButton: Button
 private lateinit var teamAThree: Button
 private lateinit var teamATwo: Button
@@ -30,31 +32,6 @@ private const val TEAM_B_SCORE = "0"
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart() called")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onResume() called")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onPause() called")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG, "onStop() called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG, "onDestroy() called")
-    }
-
     private val scoreViewModel: ScoreViewModel by lazy {
         ViewModelProviders.of(this).get(ScoreViewModel::class.java)
     }
@@ -67,6 +44,8 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate(Bundle?) called")
 
         resetButton = findViewById(R.id.reset_button)
+        endGameButton = findViewById(R.id.end_game_button)
+
         teamAThree = findViewById(R.id.three_point_a)
         teamATwo = findViewById(R.id.two_point_a)
         teamAOne = findViewById(R.id.free_throw_a)
@@ -144,6 +123,24 @@ class MainActivity : AppCompatActivity() {
             teamAScore.setText("0")
             teamBScore.setText("0")
         }
+
+        endGameButton.setOnClickListener { view: View ->
+            // Start WinnerActivity
+            var scoreA = scoreViewModel.getAScore
+            var scoreB = scoreViewModel.getBScore
+            Log.d(TAG, "A score: $scoreA")
+            Log.d(TAG, "B score: $scoreB")
+            var winner: String
+            if(scoreA > scoreB){
+                winner = "The winner is Team A!"
+            }
+            else if (scoreA < scoreB)
+                winner = "The winner is Team B!"
+            else
+                winner = "The game is a tie!"
+            val intent = WinnerActivity.newIntent(this@MainActivity, winner)
+            startActivity(intent)
+        }
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
@@ -155,8 +152,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateScore (){
-
-
 
         if(teamName == 0) {
             score = scoreViewModel.getAScore
