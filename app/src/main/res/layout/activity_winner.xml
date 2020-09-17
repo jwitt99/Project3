@@ -7,8 +7,8 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="303dp"
-        android:layout_height="199dp"
+        android:layout_width="298dp"
+        android:layout_height="46dp"
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
         android:layout_marginTop="150dp"
@@ -21,63 +21,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="146dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="293dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/team_a_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/team_a_text" />
-
-                <TextView
-                    android:id="@+id/team_a_score_text"
-                    style="@style/scoreTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="122dp"
-                    android:text="@string/zero" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="293dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/team_b_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/team_b_text" />
-
-                <TextView
-                    android:id="@+id/team_b_score_text"
-                    style="@style/scoreTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="122dp"
-                    android:text="@string/zero" />
-
-            </LinearLayout>
-        </LinearLayout>
-
         <TextView
             android:id="@+id/winning_team_text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            tools:text="Team A won!"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="30dp"
+            tools:text="Team A won!" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
